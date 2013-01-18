@@ -1,0 +1,112 @@
+﻿★アプリケーションの名前：「○×ゲーム」
+
+★機能：3 かける3 の升目に区切られていて、升目の部分をクリック等すると○と×の模様
+が順にその升目上に表示される
+
+★開発環境/言語：「Ｃ言語」
+
+★○×をどう表示するかのアイデア：
+o o x
+x x o
+o o x
+こんな感じ。
+Ｃ言語で作成途中に、
+アルファベットのoとxを使うことにした。
+
+★升目をどうやって指定させるかのアイデア：
+1 2 3
+4 5 6
+7 8 9
+数字キーで場所を指定。
+
+★次に描画するのは○か×かを、どのようにプログラムで判断させるのか
+先攻なら○。
+後攻なら×。
+変数に「１」入れ、ターン終了毎に「－１」をかけ、今誰の番なのかを判断。
+
+★終了や勝ち負けの判定をどうするか
+考え中
+
+★その他
+１時限目は色々調べていた。
+http://shtpg.blog16.fc2.com/blog-entry-6.html
+http://c-production.com/contents/c/sec07.html
+など。
+Ｃ言語でも作れるようなので、真っ白な状態から作り始めてみたが、
+まだ途中。
+今の時点ではexeはエラーが出るので、
+テキストのみ↓
+
+/* 課題４：私が考えて作った「○×ゲーム」をGitHubで提出 */
+#include <stdio.h>
+
+/* グローバル変数 */
+char op[256];
+char xp[256];
+int imadare;
+char one;
+char two;
+char three;
+char four;
+char five;
+char six;
+char seven;
+char eight;
+char nine;
+
+/* プロトタイプ宣言 */
+void Player(void);
+void StartField(void);
+void Field(void);
+void Change(void);
+
+void main(void){
+	Player();
+	StartField();
+	Field();
+
+
+
+}
+
+/* Player(名前入力) */
+void Player(void){
+	printf("先行の人の名前を入力してね！：");
+	scanf("%s" , op);
+	printf("後攻の人の名前を入力してね！：");
+	scanf("%s" , xp);
+}
+
+/* StartField（初期画面を作る準備） */
+void StartField(void){
+	one = '1';
+	two = '2';
+	three= '3';
+	four = '4';
+	five = '5';
+	six = '6';
+	seven = '7';
+	eight = '8';
+	nine = '9';
+	imadare = 1;
+	printf("\n");
+}
+
+/* Change（ターンを交代する） */
+void Change(void){
+	imadare = imadare * -1;
+}
+
+/* Field（画面の表示） */
+void Field(){
+	if( imadare = 1 ){
+		printf("%sのターンだよ！\n「o」を置きたい場所を数字キーで指定してね！\n" , op);
+	}
+	else{
+		printf("%sのターンだよ！\n「x」を置きたい場所を数字キーで指定してね！\n" , xp);
+	}
+	printf("%c %c %c\n" , one , two , three);
+	printf("%c %c %c\n" , four , five , six);
+	printf("%c %c %c\n" , seven , eight , nine);
+	printf("置きたい場所は？：");
+}
